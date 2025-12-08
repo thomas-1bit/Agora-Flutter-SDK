@@ -2729,7 +2729,8 @@ class RtcEngineContext implements AgoraSerializable {
       this.threadPriority,
       this.useExternalEglContext,
       this.domainLimit,
-      this.autoRegisterAgoraExtensions});
+      this.autoRegisterAgoraExtensions,
+      this.agoraLibBaseUrl});
 
   /// The App ID issued by Agora for your project. Only users in apps with the same App ID can join the same channel and communicate with each other. An App ID can only be used to create one RtcEngine instance. To change your App ID, call release to destroy the current RtcEngine instance, and then create a new one.
   @JsonKey(name: 'appId')
@@ -2780,6 +2781,13 @@ class RtcEngineContext implements AgoraSerializable {
   /// Whether to automatically register the Agora extensions when initializing RtcEngine : true : (Default) Automatically register the Agora extensions when initializing RtcEngine. false : Do not register the Agora extensions when initializing RtcEngine. You need to call enableExtension to register the Agora extensions.
   @JsonKey(name: 'autoRegisterAgoraExtensions')
   final bool? autoRegisterAgoraExtensions;
+
+  /// Base URL for downloading Agora .so files dynamically at runtime.
+  /// When provided, the SDK will download native libraries from this URL instead of bundling them in the APK.
+  /// The URL should point to a directory structure like: baseUrl/libagora-rtc-sdk.so
+  /// Note: This project only supports arm64-v8a architecture.
+  @JsonKey(name: 'agoraLibBaseUrl')
+  final String? agoraLibBaseUrl;
 
   /// @nodoc
   factory RtcEngineContext.fromJson(Map<String, dynamic> json) =>

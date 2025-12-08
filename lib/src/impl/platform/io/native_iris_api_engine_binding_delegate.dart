@@ -21,7 +21,31 @@ ffi.DynamicLibrary _loadLib() {
   }
 
   if (Platform.isAndroid) {
-    return ffi.DynamicLibrary.open("lib$_libName.so");
+    // On Android, AgoraRtcWrapper is loaded by Java's System.loadLibrary()
+    // after path injection. However, due to Android's linker namespace isolation,
+    // libraries loaded via System.loadLibrary() from different sources (APK vs injected path)
+    // might not see each other's symbols even in the same classloader namespace.
+    //
+    // The issue: When System.loadLibrary("AgoraRtcWrapper") is called, it loads from the APK,
+    // but libagora-rtc-sdk.so was loaded from the injected path. Even though both are in the
+    // classloader namespace, the symbols from libagora-rtc-sdk.so might not be visible to
+    // AgoraRtcWrapper because System.loadLibrary() doesn't always use RTLD_GLOBAL.
+    //
+    // Solution: Use DynamicLibrary.open() with the library name to access AgoraRtcWrapper.
+    // This will search in the same paths that System.loadLibrary() uses (including injected paths),
+    // and will load the library in a way that can see symbols from libraries loaded via
+    // System.loadLibrary() in the same namespace.
+    try {
+      // Try to open AgoraRtcWrapper directly - this should find it in the APK's lib directory
+      // or in the injected path, and will load it in a way that can see symbols from
+      // libraries loaded via System.loadLibrary() in the classloader namespace
+      return ffi.DynamicLibrary.open('lib$_libName.so');
+    } catch (e) {
+      // Fallback to process() if open() fails
+      // This accesses the current process namespace where System.loadLibrary()
+      // loaded libraries are visible
+      return ffi.DynamicLibrary.process();
+    }
   }
 
   return ffi.DynamicLibrary.process();

@@ -33,6 +33,11 @@ android {
         minSdkVersion safeExtGet('minSdkVersion', 21)
 
         consumerProguardFiles 'consumer-rules.pro'
+        
+        // This project supports arm64-v8a and armeabi-v7a architectures
+        ndk {
+            abiFilters 'arm64-v8a', 'armeabi-v7a'
+        }
     }
 
     compileOptions {
@@ -41,9 +46,10 @@ android {
     }
 
     sourceSets {
-        if (isDev(project)) {
-           main.jniLibs.srcDirs += 'libs'
-        }
+        // Exclude .so files from jniLibs - they will be loaded dynamically
+        // if (isDev(project)) {
+        //    main.jniLibs.srcDirs += 'libs'
+        // }
     }
 
     externalNativeBuild {
@@ -54,21 +60,32 @@ android {
 }
 
 dependencies {
-  if (isDev(project)) {
+  // Manual integration with dynamic .so loading
+  // Use local JAR file for agora-rtc-sdk - .so files will be loaded dynamically at runtime
     api fileTree(dir: "libs", include: ["*.jar"])
-  } else {
-    // iris dependencies start
+  
+  // iris-rtc is a JAR-only library (no .so files), so we keep it from Maven
+  // This is the bridge layer between Flutter and native Agora SDK
     api 'io.agora.rtc:iris-rtc:4.5.2-build.1'
-    // iris dependencies end
-
-    // native dependencies start
-    api 'io.agora.rtc:full-sdk:4.5.2'
-    api 'io.agora.rtc:full-screen-sharing:4.5.2'
-    // native dependencies end
-  }
+  
+  // Maven dependencies commented out for dynamic .so loading migration
+  // The full-sdk and full-screen-sharing dependencies are removed because they include .so files
+  // Uncomment below to rollback to full Maven integration:
+  // if (isDev(project)) {
+  //   api fileTree(dir: "libs", include: ["*.jar"])
+  // } else {
+  //   // iris dependencies start
+  //   api 'io.agora.rtc:iris-rtc:4.5.2-build.1'
+  //   // iris dependencies end
+  //
+  //   // native dependencies start
+  //   api 'io.agora.rtc:full-sdk:4.5.2'
+  //   api 'io.agora.rtc:full-screen-sharing:4.5.2'
+  //   // native dependencies end
+  // }
 }
 
-static boolean isDev(Project project) {
+static boolean isDev(def project) {
   def devFile = project.file('.plugin_dev')
   return devFile.exists()
 }

@@ -12,7 +12,7 @@ AudioEncodedFrameObserverOnRecordAudioEncodedFrameJson
     _$AudioEncodedFrameObserverOnRecordAudioEncodedFrameJsonFromJson(
             Map<String, dynamic> json) =>
         AudioEncodedFrameObserverOnRecordAudioEncodedFrameJson(
-          length: (json['length'] as num?)?.toInt(),
+          length: json['length'] as int?,
           audioEncodedFrameInfo: json['audioEncodedFrameInfo'] == null
               ? null
               : EncodedAudioFrameInfo.fromJson(
@@ -40,7 +40,7 @@ AudioEncodedFrameObserverOnPlaybackAudioEncodedFrameJson
     _$AudioEncodedFrameObserverOnPlaybackAudioEncodedFrameJsonFromJson(
             Map<String, dynamic> json) =>
         AudioEncodedFrameObserverOnPlaybackAudioEncodedFrameJson(
-          length: (json['length'] as num?)?.toInt(),
+          length: json['length'] as int?,
           audioEncodedFrameInfo: json['audioEncodedFrameInfo'] == null
               ? null
               : EncodedAudioFrameInfo.fromJson(
@@ -68,7 +68,7 @@ AudioEncodedFrameObserverOnMixedAudioEncodedFrameJson
     _$AudioEncodedFrameObserverOnMixedAudioEncodedFrameJsonFromJson(
             Map<String, dynamic> json) =>
         AudioEncodedFrameObserverOnMixedAudioEncodedFrameJson(
-          length: (json['length'] as num?)?.toInt(),
+          length: json['length'] as int?,
           audioEncodedFrameInfo: json['audioEncodedFrameInfo'] == null
               ? null
               : EncodedAudioFrameInfo.fromJson(
@@ -218,7 +218,7 @@ AudioFrameObserverOnPlaybackAudioFrameBeforeMixingJson
             Map<String, dynamic> json) =>
         AudioFrameObserverOnPlaybackAudioFrameBeforeMixingJson(
           channelId: json['channelId'] as String?,
-          uid: (json['uid'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
           audioFrame: json['audioFrame'] == null
               ? null
               : AudioFrame.fromJson(json['audioFrame'] as Map<String, dynamic>),
@@ -273,7 +273,7 @@ AudioSpectrumObserverOnRemoteAudioSpectrumJson
               ?.map((e) =>
                   UserAudioSpectrumInfo.fromJson(e as Map<String, dynamic>))
               .toList(),
-          spectrumNumber: (json['spectrumNumber'] as num?)?.toInt(),
+          spectrumNumber: json['spectrumNumber'] as int?,
         );
 
 Map<String, dynamic> _$AudioSpectrumObserverOnRemoteAudioSpectrumJsonToJson(
@@ -296,8 +296,8 @@ VideoEncodedFrameObserverOnEncodedVideoFrameReceivedJson
     _$VideoEncodedFrameObserverOnEncodedVideoFrameReceivedJsonFromJson(
             Map<String, dynamic> json) =>
         VideoEncodedFrameObserverOnEncodedVideoFrameReceivedJson(
-          uid: (json['uid'] as num?)?.toInt(),
-          length: (json['length'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
+          length: json['length'] as int?,
           videoEncodedFrameInfo: json['videoEncodedFrameInfo'] == null
               ? null
               : EncodedVideoFrameInfo.fromJson(
@@ -403,7 +403,7 @@ VideoFrameObserverOnMediaPlayerVideoFrameJson
           videoFrame: json['videoFrame'] == null
               ? null
               : VideoFrame.fromJson(json['videoFrame'] as Map<String, dynamic>),
-          mediaPlayerId: (json['mediaPlayerId'] as num?)?.toInt(),
+          mediaPlayerId: json['mediaPlayerId'] as int?,
         );
 
 Map<String, dynamic> _$VideoFrameObserverOnMediaPlayerVideoFrameJsonToJson(
@@ -426,7 +426,7 @@ VideoFrameObserverOnRenderVideoFrameJson
             Map<String, dynamic> json) =>
         VideoFrameObserverOnRenderVideoFrameJson(
           channelId: json['channelId'] as String?,
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
           videoFrame: json['videoFrame'] == null
               ? null
               : VideoFrame.fromJson(json['videoFrame'] as Map<String, dynamic>),
@@ -496,7 +496,7 @@ MediaRecorderObserverOnRecorderStateChangedJson
             Map<String, dynamic> json) =>
         MediaRecorderObserverOnRecorderStateChangedJson(
           channelId: json['channelId'] as String?,
-          uid: (json['uid'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
           state: $enumDecodeNullable(_$RecorderStateEnumMap, json['state']),
           reason:
               $enumDecodeNullable(_$RecorderReasonCodeEnumMap, json['reason']),
@@ -538,7 +538,7 @@ MediaRecorderObserverOnRecorderInfoUpdatedJson
             Map<String, dynamic> json) =>
         MediaRecorderObserverOnRecorderInfoUpdatedJson(
           channelId: json['channelId'] as String?,
-          uid: (json['uid'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
           info: json['info'] == null
               ? null
               : RecorderInfo.fromJson(json['info'] as Map<String, dynamic>),
@@ -737,8 +737,8 @@ MediaPlayerSourceObserverOnPositionChangedJson
     _$MediaPlayerSourceObserverOnPositionChangedJsonFromJson(
             Map<String, dynamic> json) =>
         MediaPlayerSourceObserverOnPositionChangedJson(
-          positionMs: (json['positionMs'] as num?)?.toInt(),
-          timestampMs: (json['timestampMs'] as num?)?.toInt(),
+          positionMs: json['positionMs'] as int?,
+          timestampMs: json['timestampMs'] as int?,
         );
 
 Map<String, dynamic> _$MediaPlayerSourceObserverOnPositionChangedJsonToJson(
@@ -762,7 +762,7 @@ MediaPlayerSourceObserverOnPlayerEventJson
         MediaPlayerSourceObserverOnPlayerEventJson(
           eventCode:
               $enumDecodeNullable(_$MediaPlayerEventEnumMap, json['eventCode']),
-          elapsedTime: (json['elapsedTime'] as num?)?.toInt(),
+          elapsedTime: json['elapsedTime'] as int?,
           message: json['message'] as String?,
         );
 
@@ -807,7 +807,7 @@ MediaPlayerSourceObserverOnMetaDataJson
     _$MediaPlayerSourceObserverOnMetaDataJsonFromJson(
             Map<String, dynamic> json) =>
         MediaPlayerSourceObserverOnMetaDataJson(
-          length: (json['length'] as num?)?.toInt(),
+          length: json['length'] as int?,
         );
 
 Map<String, dynamic> _$MediaPlayerSourceObserverOnMetaDataJsonToJson(
@@ -828,7 +828,7 @@ MediaPlayerSourceObserverOnPlayBufferUpdatedJson
     _$MediaPlayerSourceObserverOnPlayBufferUpdatedJsonFromJson(
             Map<String, dynamic> json) =>
         MediaPlayerSourceObserverOnPlayBufferUpdatedJson(
-          playCachedBuffer: (json['playCachedBuffer'] as num?)?.toInt(),
+          playCachedBuffer: json['playCachedBuffer'] as int?,
         );
 
 Map<String, dynamic> _$MediaPlayerSourceObserverOnPlayBufferUpdatedJsonToJson(
@@ -997,7 +997,7 @@ MediaPlayerSourceObserverOnAudioVolumeIndicationJson
     _$MediaPlayerSourceObserverOnAudioVolumeIndicationJsonFromJson(
             Map<String, dynamic> json) =>
         MediaPlayerSourceObserverOnAudioVolumeIndicationJson(
-          volume: (json['volume'] as num?)?.toInt(),
+          volume: json['volume'] as int?,
         );
 
 Map<String, dynamic>
@@ -1088,7 +1088,7 @@ MusicContentCenterEventHandlerOnLyricResultJson
             Map<String, dynamic> json) =>
         MusicContentCenterEventHandlerOnLyricResultJson(
           requestId: json['requestId'] as String?,
-          songCode: (json['songCode'] as num?)?.toInt(),
+          songCode: json['songCode'] as int?,
           lyricUrl: json['lyricUrl'] as String?,
           reason: $enumDecodeNullable(
               _$MusicContentCenterStateReasonEnumMap, json['reason']),
@@ -1117,7 +1117,7 @@ MusicContentCenterEventHandlerOnSongSimpleInfoResultJson
             Map<String, dynamic> json) =>
         MusicContentCenterEventHandlerOnSongSimpleInfoResultJson(
           requestId: json['requestId'] as String?,
-          songCode: (json['songCode'] as num?)?.toInt(),
+          songCode: json['songCode'] as int?,
           simpleInfo: json['simpleInfo'] as String?,
           reason: $enumDecodeNullable(
               _$MusicContentCenterStateReasonEnumMap, json['reason']),
@@ -1147,8 +1147,8 @@ MusicContentCenterEventHandlerOnPreLoadEventJson
             Map<String, dynamic> json) =>
         MusicContentCenterEventHandlerOnPreLoadEventJson(
           requestId: json['requestId'] as String?,
-          songCode: (json['songCode'] as num?)?.toInt(),
-          percent: (json['percent'] as num?)?.toInt(),
+          songCode: json['songCode'] as int?,
+          percent: json['percent'] as int?,
           lyricUrl: json['lyricUrl'] as String?,
           state: $enumDecodeNullable(_$PreloadStateEnumMap, json['state']),
           reason: $enumDecodeNullable(
@@ -1190,7 +1190,7 @@ RtcEngineEventHandlerOnJoinChannelSuccessJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          elapsed: (json['elapsed'] as num?)?.toInt(),
+          elapsed: json['elapsed'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnJoinChannelSuccessJsonToJson(
@@ -1216,7 +1216,7 @@ RtcEngineEventHandlerOnRejoinChannelSuccessJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          elapsed: (json['elapsed'] as num?)?.toInt(),
+          elapsed: json['elapsed'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnRejoinChannelSuccessJsonToJson(
@@ -1239,10 +1239,10 @@ RtcEngineEventHandlerOnProxyConnectedJson
             Map<String, dynamic> json) =>
         RtcEngineEventHandlerOnProxyConnectedJson(
           channel: json['channel'] as String?,
-          uid: (json['uid'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
           proxyType: $enumDecodeNullable(_$ProxyTypeEnumMap, json['proxyType']),
           localProxyIp: json['localProxyIp'] as String?,
-          elapsed: (json['elapsed'] as num?)?.toInt(),
+          elapsed: json['elapsed'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnProxyConnectedJsonToJson(
@@ -1372,10 +1372,10 @@ RtcEngineEventHandlerOnAudioQualityJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
           quality: $enumDecodeNullable(_$QualityTypeEnumMap, json['quality']),
-          delay: (json['delay'] as num?)?.toInt(),
-          lost: (json['lost'] as num?)?.toInt(),
+          delay: json['delay'] as int?,
+          lost: json['lost'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnAudioQualityJsonToJson(
@@ -1443,8 +1443,8 @@ RtcEngineEventHandlerOnAudioVolumeIndicationJson
           speakers: (json['speakers'] as List<dynamic>?)
               ?.map((e) => AudioVolumeInfo.fromJson(e as Map<String, dynamic>))
               .toList(),
-          speakerNumber: (json['speakerNumber'] as num?)?.toInt(),
-          totalVolume: (json['totalVolume'] as num?)?.toInt(),
+          speakerNumber: json['speakerNumber'] as int?,
+          totalVolume: json['totalVolume'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnAudioVolumeIndicationJsonToJson(
@@ -1571,7 +1571,7 @@ RtcEngineEventHandlerOnAudioMixingPositionChangedJson
     _$RtcEngineEventHandlerOnAudioMixingPositionChangedJsonFromJson(
             Map<String, dynamic> json) =>
         RtcEngineEventHandlerOnAudioMixingPositionChangedJson(
-          position: (json['position'] as num?)?.toInt(),
+          position: json['position'] as int?,
         );
 
 Map<String, dynamic>
@@ -1602,7 +1602,7 @@ RtcEngineEventHandlerOnAudioEffectFinishedJson
     _$RtcEngineEventHandlerOnAudioEffectFinishedJsonFromJson(
             Map<String, dynamic> json) =>
         RtcEngineEventHandlerOnAudioEffectFinishedJson(
-          soundId: (json['soundId'] as num?)?.toInt(),
+          soundId: json['soundId'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnAudioEffectFinishedJsonToJson(
@@ -1655,7 +1655,7 @@ RtcEngineEventHandlerOnNetworkQualityJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
           txQuality:
               $enumDecodeNullable(_$QualityTypeEnumMap, json['txQuality']),
           rxQuality:
@@ -1779,9 +1779,9 @@ RtcEngineEventHandlerOnFirstLocalVideoFrameJson
             Map<String, dynamic> json) =>
         RtcEngineEventHandlerOnFirstLocalVideoFrameJson(
           source: $enumDecodeNullable(_$VideoSourceTypeEnumMap, json['source']),
-          width: (json['width'] as num?)?.toInt(),
-          height: (json['height'] as num?)?.toInt(),
-          elapsed: (json['elapsed'] as num?)?.toInt(),
+          width: json['width'] as int?,
+          height: json['height'] as int?,
+          elapsed: json['elapsed'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnFirstLocalVideoFrameJsonToJson(
@@ -1809,7 +1809,7 @@ RtcEngineEventHandlerOnFirstLocalVideoFramePublishedJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          elapsed: (json['elapsed'] as num?)?.toInt(),
+          elapsed: json['elapsed'] as int?,
         );
 
 Map<String, dynamic>
@@ -1836,10 +1836,10 @@ RtcEngineEventHandlerOnFirstRemoteVideoDecodedJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
-          width: (json['width'] as num?)?.toInt(),
-          height: (json['height'] as num?)?.toInt(),
-          elapsed: (json['elapsed'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
+          width: json['width'] as int?,
+          height: json['height'] as int?,
+          elapsed: json['elapsed'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnFirstRemoteVideoDecodedJsonToJson(
@@ -1870,10 +1870,10 @@ RtcEngineEventHandlerOnVideoSizeChangedJson
                   json['connection'] as Map<String, dynamic>),
           sourceType:
               $enumDecodeNullable(_$VideoSourceTypeEnumMap, json['sourceType']),
-          uid: (json['uid'] as num?)?.toInt(),
-          width: (json['width'] as num?)?.toInt(),
-          height: (json['height'] as num?)?.toInt(),
-          rotation: (json['rotation'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
+          width: json['width'] as int?,
+          height: json['height'] as int?,
+          rotation: json['rotation'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnVideoSizeChangedJsonToJson(
@@ -1971,11 +1971,11 @@ RtcEngineEventHandlerOnRemoteVideoStateChangedJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
           state: $enumDecodeNullable(_$RemoteVideoStateEnumMap, json['state']),
           reason: $enumDecodeNullable(
               _$RemoteVideoStateReasonEnumMap, json['reason']),
-          elapsed: (json['elapsed'] as num?)?.toInt(),
+          elapsed: json['elapsed'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnRemoteVideoStateChangedJsonToJson(
@@ -2029,10 +2029,10 @@ RtcEngineEventHandlerOnFirstRemoteVideoFrameJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
-          width: (json['width'] as num?)?.toInt(),
-          height: (json['height'] as num?)?.toInt(),
-          elapsed: (json['elapsed'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
+          width: json['width'] as int?,
+          height: json['height'] as int?,
+          elapsed: json['elapsed'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnFirstRemoteVideoFrameJsonToJson(
@@ -2061,8 +2061,8 @@ RtcEngineEventHandlerOnUserJoinedJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
-          elapsed: (json['elapsed'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
+          elapsed: json['elapsed'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnUserJoinedJsonToJson(
@@ -2089,7 +2089,7 @@ RtcEngineEventHandlerOnUserOfflineJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
           reason: $enumDecodeNullable(
               _$UserOfflineReasonTypeEnumMap, json['reason']),
         );
@@ -2124,7 +2124,7 @@ RtcEngineEventHandlerOnUserMuteAudioJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
           muted: json['muted'] as bool?,
         );
 
@@ -2152,7 +2152,7 @@ RtcEngineEventHandlerOnUserMuteVideoJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
           muted: json['muted'] as bool?,
         );
 
@@ -2180,7 +2180,7 @@ RtcEngineEventHandlerOnUserEnableVideoJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
           enabled: json['enabled'] as bool?,
         );
 
@@ -2208,8 +2208,8 @@ RtcEngineEventHandlerOnUserStateChangedJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
-          state: (json['state'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
+          state: json['state'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnUserStateChangedJsonToJson(
@@ -2236,7 +2236,7 @@ RtcEngineEventHandlerOnUserEnableLocalVideoJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
           enabled: json['enabled'] as bool?,
         );
 
@@ -2383,10 +2383,10 @@ RtcEngineEventHandlerOnCameraFocusAreaChangedJson
     _$RtcEngineEventHandlerOnCameraFocusAreaChangedJsonFromJson(
             Map<String, dynamic> json) =>
         RtcEngineEventHandlerOnCameraFocusAreaChangedJson(
-          x: (json['x'] as num?)?.toInt(),
-          y: (json['y'] as num?)?.toInt(),
-          width: (json['width'] as num?)?.toInt(),
-          height: (json['height'] as num?)?.toInt(),
+          x: json['x'] as int?,
+          y: json['y'] as int?,
+          width: json['width'] as int?,
+          height: json['height'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnCameraFocusAreaChangedJsonToJson(
@@ -2410,10 +2410,10 @@ RtcEngineEventHandlerOnCameraExposureAreaChangedJson
     _$RtcEngineEventHandlerOnCameraExposureAreaChangedJsonFromJson(
             Map<String, dynamic> json) =>
         RtcEngineEventHandlerOnCameraExposureAreaChangedJson(
-          x: (json['x'] as num?)?.toInt(),
-          y: (json['y'] as num?)?.toInt(),
-          width: (json['width'] as num?)?.toInt(),
-          height: (json['height'] as num?)?.toInt(),
+          x: json['x'] as int?,
+          y: json['y'] as int?,
+          width: json['width'] as int?,
+          height: json['height'] as int?,
         );
 
 Map<String, dynamic>
@@ -2438,15 +2438,15 @@ RtcEngineEventHandlerOnFacePositionChangedJson
     _$RtcEngineEventHandlerOnFacePositionChangedJsonFromJson(
             Map<String, dynamic> json) =>
         RtcEngineEventHandlerOnFacePositionChangedJson(
-          imageWidth: (json['imageWidth'] as num?)?.toInt(),
-          imageHeight: (json['imageHeight'] as num?)?.toInt(),
+          imageWidth: json['imageWidth'] as int?,
+          imageHeight: json['imageHeight'] as int?,
           vecRectangle: (json['vecRectangle'] as List<dynamic>?)
               ?.map((e) => Rectangle.fromJson(e as Map<String, dynamic>))
               .toList(),
           vecDistance: (json['vecDistance'] as List<dynamic>?)
-              ?.map((e) => (e as num).toInt())
+              ?.map((e) => e as int)
               .toList(),
-          numFaces: (json['numFaces'] as num?)?.toInt(),
+          numFaces: json['numFaces'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnFacePositionChangedJsonToJson(
@@ -2642,10 +2642,10 @@ RtcEngineEventHandlerOnStreamMessageJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
-          streamId: (json['streamId'] as num?)?.toInt(),
-          length: (json['length'] as num?)?.toInt(),
-          sentTs: (json['sentTs'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
+          streamId: json['streamId'] as int?,
+          length: json['length'] as int?,
+          sentTs: json['sentTs'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnStreamMessageJsonToJson(
@@ -2674,11 +2674,11 @@ RtcEngineEventHandlerOnStreamMessageErrorJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
-          streamId: (json['streamId'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
+          streamId: json['streamId'] as int?,
           code: $enumDecodeNullable(_$ErrorCodeTypeEnumMap, json['code']),
-          missed: (json['missed'] as num?)?.toInt(),
-          cached: (json['cached'] as num?)?.toInt(),
+          missed: json['missed'] as int?,
+          cached: json['cached'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnStreamMessageErrorJsonToJson(
@@ -2796,7 +2796,7 @@ RtcEngineEventHandlerOnFirstLocalAudioFramePublishedJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          elapsed: (json['elapsed'] as num?)?.toInt(),
+          elapsed: json['elapsed'] as int?,
         );
 
 Map<String, dynamic>
@@ -2823,8 +2823,8 @@ RtcEngineEventHandlerOnFirstRemoteAudioDecodedJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          uid: (json['uid'] as num?)?.toInt(),
-          elapsed: (json['elapsed'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
+          elapsed: json['elapsed'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnFirstRemoteAudioDecodedJsonToJson(
@@ -2851,8 +2851,8 @@ RtcEngineEventHandlerOnFirstRemoteAudioFrameJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          userId: (json['userId'] as num?)?.toInt(),
-          elapsed: (json['elapsed'] as num?)?.toInt(),
+          userId: json['userId'] as int?,
+          elapsed: json['elapsed'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnFirstRemoteAudioFrameJsonToJson(
@@ -2930,11 +2930,11 @@ RtcEngineEventHandlerOnRemoteAudioStateChangedJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
           state: $enumDecodeNullable(_$RemoteAudioStateEnumMap, json['state']),
           reason: $enumDecodeNullable(
               _$RemoteAudioStateReasonEnumMap, json['reason']),
-          elapsed: (json['elapsed'] as num?)?.toInt(),
+          elapsed: json['elapsed'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnRemoteAudioStateChangedJsonToJson(
@@ -2984,7 +2984,7 @@ RtcEngineEventHandlerOnActiveSpeakerJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          uid: (json['uid'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnActiveSpeakerJsonToJson(
@@ -3038,11 +3038,11 @@ RtcEngineEventHandlerOnSnapshotTakenJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          uid: (json['uid'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
           filePath: json['filePath'] as String?,
-          width: (json['width'] as num?)?.toInt(),
-          height: (json['height'] as num?)?.toInt(),
-          errCode: (json['errCode'] as num?)?.toInt(),
+          width: json['width'] as int?,
+          height: json['height'] as int?,
+          errCode: json['errCode'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnSnapshotTakenJsonToJson(
@@ -3148,7 +3148,7 @@ RtcEngineEventHandlerOnAudioDeviceVolumeChangedJson
         RtcEngineEventHandlerOnAudioDeviceVolumeChangedJson(
           deviceType:
               $enumDecodeNullable(_$MediaDeviceTypeEnumMap, json['deviceType']),
-          volume: (json['volume'] as num?)?.toInt(),
+          volume: json['volume'] as int?,
           muted: json['muted'] as bool?,
         );
 
@@ -3270,7 +3270,7 @@ RtcEngineEventHandlerOnAudioRoutingChangedJson
     _$RtcEngineEventHandlerOnAudioRoutingChangedJsonFromJson(
             Map<String, dynamic> json) =>
         RtcEngineEventHandlerOnAudioRoutingChangedJson(
-          routing: (json['routing'] as num?)?.toInt(),
+          routing: json['routing'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnAudioRoutingChangedJsonToJson(
@@ -3361,7 +3361,7 @@ RtcEngineEventHandlerOnRemoteSubscribeFallbackToAudioOnlyJson
     _$RtcEngineEventHandlerOnRemoteSubscribeFallbackToAudioOnlyJsonFromJson(
             Map<String, dynamic> json) =>
         RtcEngineEventHandlerOnRemoteSubscribeFallbackToAudioOnlyJson(
-          uid: (json['uid'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
           isFallbackOrRecover: json['isFallbackOrRecover'] as bool?,
         );
 
@@ -3390,10 +3390,10 @@ RtcEngineEventHandlerOnRemoteAudioTransportStatsJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
-          delay: (json['delay'] as num?)?.toInt(),
-          lost: (json['lost'] as num?)?.toInt(),
-          rxKBitRate: (json['rxKBitRate'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
+          delay: json['delay'] as int?,
+          lost: json['lost'] as int?,
+          rxKBitRate: json['rxKBitRate'] as int?,
         );
 
 Map<String, dynamic>
@@ -3423,10 +3423,10 @@ RtcEngineEventHandlerOnRemoteVideoTransportStatsJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
-          delay: (json['delay'] as num?)?.toInt(),
-          lost: (json['lost'] as num?)?.toInt(),
-          rxKBitRate: (json['rxKBitRate'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
+          delay: json['delay'] as int?,
+          lost: json['lost'] as int?,
+          rxKBitRate: json['rxKBitRate'] as int?,
         );
 
 Map<String, dynamic>
@@ -3697,7 +3697,7 @@ RtcEngineEventHandlerOnLocalUserRegisteredJson
     _$RtcEngineEventHandlerOnLocalUserRegisteredJsonFromJson(
             Map<String, dynamic> json) =>
         RtcEngineEventHandlerOnLocalUserRegisteredJson(
-          uid: (json['uid'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
           userAccount: json['userAccount'] as String?,
         );
 
@@ -3720,7 +3720,7 @@ RtcEngineEventHandlerOnUserInfoUpdatedJson
     _$RtcEngineEventHandlerOnUserInfoUpdatedJsonFromJson(
             Map<String, dynamic> json) =>
         RtcEngineEventHandlerOnUserInfoUpdatedJson(
-          uid: (json['uid'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
           info: json['info'] == null
               ? null
               : UserInfo.fromJson(json['info'] as Map<String, dynamic>),
@@ -3749,7 +3749,7 @@ RtcEngineEventHandlerOnUserAccountUpdatedJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          remoteUid: (json['remoteUid'] as num?)?.toInt(),
+          remoteUid: json['remoteUid'] as int?,
           remoteUserAccount: json['remoteUserAccount'] as String?,
         );
 
@@ -3777,7 +3777,7 @@ RtcEngineEventHandlerOnVideoRenderingTracingResultJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          uid: (json['uid'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
           currentEvent: $enumDecodeNullable(
               _$MediaTraceEventEnumMap, json['currentEvent']),
           tracingInfo: json['tracingInfo'] == null
@@ -3888,12 +3888,12 @@ RtcEngineEventHandlerOnAudioSubscribeStateChangedJson
             Map<String, dynamic> json) =>
         RtcEngineEventHandlerOnAudioSubscribeStateChangedJson(
           channel: json['channel'] as String?,
-          uid: (json['uid'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
           oldState: $enumDecodeNullable(
               _$StreamSubscribeStateEnumMap, json['oldState']),
           newState: $enumDecodeNullable(
               _$StreamSubscribeStateEnumMap, json['newState']),
-          elapseSinceLastState: (json['elapseSinceLastState'] as num?)?.toInt(),
+          elapseSinceLastState: json['elapseSinceLastState'] as int?,
         );
 
 Map<String, dynamic>
@@ -3927,12 +3927,12 @@ RtcEngineEventHandlerOnVideoSubscribeStateChangedJson
             Map<String, dynamic> json) =>
         RtcEngineEventHandlerOnVideoSubscribeStateChangedJson(
           channel: json['channel'] as String?,
-          uid: (json['uid'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
           oldState: $enumDecodeNullable(
               _$StreamSubscribeStateEnumMap, json['oldState']),
           newState: $enumDecodeNullable(
               _$StreamSubscribeStateEnumMap, json['newState']),
-          elapseSinceLastState: (json['elapseSinceLastState'] as num?)?.toInt(),
+          elapseSinceLastState: json['elapseSinceLastState'] as int?,
         );
 
 Map<String, dynamic>
@@ -3963,7 +3963,7 @@ RtcEngineEventHandlerOnAudioPublishStateChangedJson
               _$StreamPublishStateEnumMap, json['oldState']),
           newState: $enumDecodeNullable(
               _$StreamPublishStateEnumMap, json['newState']),
-          elapseSinceLastState: (json['elapseSinceLastState'] as num?)?.toInt(),
+          elapseSinceLastState: json['elapseSinceLastState'] as int?,
         );
 
 Map<String, dynamic>
@@ -4001,7 +4001,7 @@ RtcEngineEventHandlerOnVideoPublishStateChangedJson
               _$StreamPublishStateEnumMap, json['oldState']),
           newState: $enumDecodeNullable(
               _$StreamPublishStateEnumMap, json['newState']),
-          elapseSinceLastState: (json['elapseSinceLastState'] as num?)?.toInt(),
+          elapseSinceLastState: json['elapseSinceLastState'] as int?,
         );
 
 Map<String, dynamic>
@@ -4031,10 +4031,10 @@ RtcEngineEventHandlerOnTranscodedStreamLayoutInfoJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          uid: (json['uid'] as num?)?.toInt(),
-          width: (json['width'] as num?)?.toInt(),
-          height: (json['height'] as num?)?.toInt(),
-          layoutCount: (json['layoutCount'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
+          width: json['width'] as int?,
+          height: json['height'] as int?,
+          layoutCount: json['layoutCount'] as int?,
           layoutlist: (json['layoutlist'] as List<dynamic>?)
               ?.map((e) => VideoLayout.fromJson(e as Map<String, dynamic>))
               .toList(),
@@ -4069,8 +4069,8 @@ RtcEngineEventHandlerOnAudioMetadataReceivedJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          uid: (json['uid'] as num?)?.toInt(),
-          length: (json['length'] as num?)?.toInt(),
+          uid: json['uid'] as int?,
+          length: json['length'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnAudioMetadataReceivedJsonToJson(
@@ -4176,7 +4176,7 @@ RtcEngineEventHandlerOnExtensionErrorWithContextJson
               ? null
               : ExtensionContext.fromJson(
                   json['context'] as Map<String, dynamic>),
-          error: (json['error'] as num?)?.toInt(),
+          error: json['error'] as int?,
           message: json['message'] as String?,
         );
 
@@ -4205,7 +4205,7 @@ RtcEngineEventHandlerOnSetRtmFlagResultJson
               ? null
               : RtcConnection.fromJson(
                   json['connection'] as Map<String, dynamic>),
-          code: (json['code'] as num?)?.toInt(),
+          code: json['code'] as int?,
         );
 
 Map<String, dynamic> _$RtcEngineEventHandlerOnSetRtmFlagResultJsonToJson(

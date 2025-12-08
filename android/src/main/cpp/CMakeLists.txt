@@ -12,6 +12,7 @@ project(${LIBRARY_NAME} VERSION ${LIBRARY_VERSION})
 set(SOURCES 
     "${CMAKE_CURRENT_SOURCE_DIR}/vm_util.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/iris_rtc_rendering_android.cc"
+    "${CMAKE_CURRENT_SOURCE_DIR}/agora_lib_path_jni.cc"
      )
 
 add_library(${LIBRARY_NAME} SHARED
@@ -20,10 +21,12 @@ add_library(${LIBRARY_NAME} SHARED
 
 find_library(log-lib log)
 find_library(android-lib android)
+find_library(dl-lib dl)
 target_link_libraries(${LIBRARY_NAME}
         PRIVATE
         ${log-lib}
         ${android-lib}
+        ${dl-lib}
         GLESv2
         EGL
         )

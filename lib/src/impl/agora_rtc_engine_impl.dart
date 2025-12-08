@@ -429,6 +429,36 @@ class RtcEngineImpl extends rtc_engine_ex_binding.RtcEngineExImpl
       engineMethodChannel = const MethodChannel('agora_rtc_ng');
 
       if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
+        // Handle dynamic .so file loading if agoraLibBaseUrl is provided
+        if (context.agoraLibBaseUrl != null && context.agoraLibBaseUrl!.isNotEmpty) {
+          try {
+            // Step 1: Download .so files from the provided base URL
+            final String? libPath = await engineMethodChannel.invokeMethod<String>(
+              'downloadAgoraLibs',
+              {'baseUrl': context.agoraLibBaseUrl},
+            );
+
+            if (libPath != null && libPath.isNotEmpty) {
+              // Step 2: Set the library path before loading
+              await engineMethodChannel.invokeMethod('setAgoraLibPath', libPath);
+            } else {
+              throw AgoraRtcException(
+                code: -1,
+                message: 'Failed to download Agora libraries from ${context.agoraLibBaseUrl}',
+              );
+            }
+          } catch (e) {
+            // If download fails, throw an exception
+            throw AgoraRtcException(
+              code: -1,
+              message: 'Failed to setup dynamic library loading: $e',
+            );
+          }
+        }
+
+        // Step 3: Initialize Android native library
+        // This will use the path set above if dynamic loading was used,
+        // or fall back to default behavior for backward compatibility
         await engineMethodChannel.invokeMethod('androidInit');
       }
 
